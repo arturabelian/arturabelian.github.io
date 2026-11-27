@@ -1,0 +1,154 @@
+/* Man-page style shared by every page.
+   The page is authored dark and flipped with `filter: invert(100%)` on <body>,
+   so "black" text below renders light on the dark canvas. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1em;
+  background-color: #1a1c20;
+  filter: invert(100%);
+}
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Layout */
+div.container {
+  max-width: 45em;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+div.main {
+  animation: intro 0.3s both;
+  animation-delay: 0.15s;
+}
+
+div.help {
+  animation: intro 0.3s both;
+  animation-delay: 0.15s;
+  display: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div,
+p.indented {
+  margin-bottom: 1em;
+}
+
+div.section div {
+  margin-left: 4em;
+}
+
+p.indented {
+  margin-left: 2em;
+}
+
+div.container div h1 {
+  font-weight: normal;
+}
+
+.command,
+.argument {
+  font-weight: bold;
+}
+
+/* Links */
+a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  background-color: #1a1c20;
+  color: #fff;
+}
+
+/* Selection */
+::-moz-selection {
+  color: #e5e3df;
+  background: #1a1c20;
+}
+
+::selection {
+  color: #e5e3df;
+  background: #1a1c20;
+}
+
+/* Status line (the "Manual page ..." bar) */
+footer {
+  background-color: #1a1c20;
+  color: white;
+  text-align: left;
+  padding: 1px;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  max-width: 45em;
+  margin: 0 auto;
+  animation: intro 0.3s both;
+  animation-delay: 0.15s;
+}
+
+/* Small screens */
+@media (max-width: 40em) {
+  div.section div {
+    margin-left: 1.5em;
+  }
+
+  p.indented {
+    margin-left: 1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  div.main,
+  div.help,
+  footer {
+    animation: none;
+  }
+}
+
+/* Printing / "Save as PDF": plain black on white */
+@media print {
+  html,
+  body {
+    background: #fff;
+    filter: none;
+  }
+
+  body,
+  a {
+    color: #000;
+  }
+
+  footer,
+  .noprint {
+    display: none;
+  }
+
+  div.container {
+    max-width: none;
+  }
+}
